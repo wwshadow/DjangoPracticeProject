@@ -1,0 +1,28 @@
+{% extends "article/base.html" %}
+{% block title %}{{ lesson.title }}{% endblock %}
+{% block content %}
+<div>
+    <div class='text-center'>
+        <h1>{{ lesson.title }}</h1>
+        <p>讲师：{{ lesson.user.username }}</p>
+    </div>
+    <div>
+      {% if lesson.video %}
+      <video src="{{ lesson.video.url }}" controls="controls" class="text-center" width=100%></video>
+      {% else %}
+      <p class="text-center">暂无章节</p>
+      {% endif %}
+    </div>
+    <div>
+      {% if lesson.description %}
+      <p>{{ lesson.description }}</p>
+      {% endif %}
+    </div>
+    <div>
+      {% if lesson.attach %}
+      <p><a href="{{ lesson.attach.url }}">{{ lesson.attach.name | cut:"courses/user_" }}</a></p>
+      {% endif %}
+    </div>
+</div>
+{% endblock %}
+
